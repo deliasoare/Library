@@ -65,6 +65,7 @@ html, body {
 }
 .add {
     max-height:60px;
+    min-width:150px;
 }
 /* Style */
 .sidebar, .main {
@@ -112,7 +113,7 @@ button.add {
 }
 .read, .remove, .unread {
     display:block;
-    width:60%;
+    width:80%;
     padding:1.1rem;
     border-radius:25px;
     border:none;
