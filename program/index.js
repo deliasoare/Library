@@ -77,14 +77,19 @@ window.onclick = (e) => {
 }
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const title2 = document.querySelector('#title').value;
-    const author2 = document.querySelector('#author').value;
-    const number2 = document.querySelector('#pages').value;
+    const title2 = document.querySelector('#title');
+    const author2 = document.querySelector('#author');
+    const number2 = document.querySelector('#pages');
     let read2;
     // eslint-disable-next-line no-unneeded-ternary
     if (document.querySelector('#read').checked)
         read2 = true;
     else
         read2 = false;
-    addBookToLibrary(title2, author2, number2, read2);
+    addBookToLibrary(title2.value, author2.value, number2.value, read2);
+    modal.style.display = 'none';
+    title2.value = '';
+    author2.value = '';
+    number2.value = '';
+    document.querySelector('#read').checked = false;
 })
