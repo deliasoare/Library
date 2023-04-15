@@ -234,6 +234,9 @@ input[type="text"]:invalid, input[type="number"]:invalid {
     font-size:1.2rem;
     height:fit-content;
 }
+button:hover, .header > h2:hover, label:hover, input[type="checkbox"] {
+    cursor:pointer;
+}
 
 @media (max-width:600px) {
     .container {
