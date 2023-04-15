@@ -12,7 +12,7 @@ Book.prototype.toggle = function() {
         this.read = true;
 }
 
-const myLibrary = [];
+let myLibrary = [];
 const addButton = document.querySelector('.add');
 const modal = document.querySelector('.popup');
 const closeModal = document.querySelector('.close');
@@ -158,7 +158,14 @@ document.addEventListener('click', (e) => {
                 e.target.textContent = target.read ? 'READ' : 'UNREAD'
                 updateSidebar();
             }
-        else if (e.target.className === 'remove') {card.remove(); updateSidebar(); };
+        else if (e.target.className === 'remove') {
+            card.remove(); updateSidebar(); 
+            // eslint-disable-next-line consistent-return, array-callback-return
+            myLibrary = myLibrary.filter((book) => {
+                if (book.title !== card.querySelector('p').textContent)
+                    return book;
+            })
+            }
 })
 
 document.addEventListener('DOMContentLoaded', () => {
