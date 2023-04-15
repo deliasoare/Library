@@ -19,7 +19,6 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(book);
 }
 
-
 function loadBook(book) {
     const card = document.createElement('div');
         card.classList = 'card';
@@ -49,14 +48,19 @@ function loadBooks() {
     })
 }
 
-function popup() {
-    
-}
 const addButton = document.querySelector('.add');
-
+const modal = document.querySelector('.popup');
+const closeModal = document.querySelector('.close');
 document.addEventListener('DOMContentLoaded', loadBooks())
 
-addButton.addEventListener('click', popup())
+addButton.addEventListener('click', () => {
+    modal.style.display = 'block';
+})
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+})
 
-
-
+window.onclick = (e) => {
+    if (e.target === modal)
+        modal.style.display = 'none';
+}
