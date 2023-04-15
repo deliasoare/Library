@@ -42,28 +42,30 @@
                 <span class="close">&times;</span>
                 <h2>Add a new Book!</h2>
                 <div class="form">
-                    <p>All fields marked with * are required.</p>
-                    <ul>
-                        <li>
-                            <label for="title">Title<span class="aria-required">*</span></label>
-                            <input type="text" maxlength="50" id="title" placeholder="Crime and Punishment">
-                        </li>
-                        <li>
-                            <label for="author">Author<span class="aria-required">*</span></label>
-                            <input type="text" maxlength="50" autofocus id="author" placeholder="Fyodor Dostoevsky">
-                        </li>
-                        <li>
-                            <label for="pages">Pages<span class="aria-required">*</span></label>
-                            <input type="number" placeholder="350" min="1" max="100000" id="pages">
-                        </li>
-                        <li>
-                            <label for="read">Read<span class="aria-required">*</span></label>
-                            <input type="checkbox" id="read">
-                        </li>
-                        <li class="submitContainer">
-                            <button type="submit" id="submit">SUBMIT</button>
-                        </li>
-                    </ul>
+                    <form action="">
+                        <p>All fields marked with * are required.</p>
+                        <ul>
+                            <li>
+                                <label for="title">Title<span class="aria-required">*</span></label>
+                                <input type="text" required minlength="3" maxlength="50" id="title" placeholder="Crime and Punishment">
+                            </li>
+                            <li>
+                                <label for="author">Author<span class="aria-required">*</span></label>
+                                <input type="text" required minlength="3" maxlength="50" autofocus id="author" placeholder="Fyodor Dostoevsky">
+                            </li>
+                            <li>
+                                <label for="pages">Pages<span class="aria-required">*</span></label>
+                                <input type="number" required placeholder="350" min="1" max="100000" id="pages">
+                            </li>
+                            <li>
+                                <label for="read">Read<span class="aria-required">*</span></label>
+                                <input type="checkbox" id="read">
+                            </li>
+                            <li class="submitContainer">
+                                <button type="submit" id="submit">SUBMIT</button>
+                            </li>
+                        </ul>
+                    </form>
                 </div>
             </div>
         </div>

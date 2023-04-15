@@ -14,10 +14,7 @@ Book.prototype.read = function() {
 
 const myLibrary = [];
 
-function addBookToLibrary(title, author, pages, read) {
-    const book = new Book(title, author, pages, read);
-    myLibrary.push(book);
-}
+
 
 function loadBook(book) {
     const card = document.createElement('div');
@@ -51,6 +48,7 @@ function loadBooks() {
 const addButton = document.querySelector('.add');
 const modal = document.querySelector('.popup');
 const closeModal = document.querySelector('.close');
+const form = document.querySelector('form');
 document.addEventListener('DOMContentLoaded', loadBooks())
 
 addButton.addEventListener('click', () => {
@@ -64,3 +62,12 @@ window.onclick = (e) => {
     if (e.target === modal)
         modal.style.display = 'none';
 }
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const number = document.querySelector('#pages').value;
+    const read = document.querySelector('#read').value;
+    // eslint-disable-next-line no-console
+    addBook
+})

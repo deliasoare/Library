@@ -151,6 +151,8 @@ button.add {
     left:50%;
     top:50%;
     transform:translate(-50%, -50%);
+    transition:4s ease-in;
+
 }
 .close {
     color:#aaa;
@@ -173,7 +175,7 @@ li + li {
 input[type="text"], input[type="number"] {
     width:90%;
     padding:0.5rem;
-    border:5px solid var(--main);
+    border:2px solid var(--main);
     border-radius:10px;
 }
 .submitContainer {
@@ -207,4 +209,14 @@ input[type="checkbox"]::before {
 }
 input[type="checkbox"]:checked::before {
     transform:scale(1);
+}
+input[type="text"]:active, input[type="number"]:active, input[type="number"]:focus, input[type="text"]:focus {
+    outline:none;
+    border:5px solid var(--main);
+}
+#submit {
+    cursor:pointer;
+}
+input[type="text"]:invalid, input[type="number"]:invalid {
+    border:2px solid var(--unread);
 }
