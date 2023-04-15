@@ -158,7 +158,7 @@ document.addEventListener('click', (e) => {
                 })
                 target.toggle();
                 e.target.className = target.read ? 'read' : 'unread';
-                e.target.textContent = target.read ? 'READ' : 'UNREAD'
+                e.target.textContent = target.read ? 'READ' : 'UNREAD';
                 updateSidebar();
             }
         else if (e.target.className === 'remove') {
@@ -168,7 +168,7 @@ document.addEventListener('click', (e) => {
                 if (book.title !== card.querySelector('p').textContent)
                     return book;
             })
-            updateSidebar(); 
+            setTimeout(updateSidebar(), 0)
             }
 })
 
