@@ -14,30 +14,43 @@ Book.prototype.read = function() {
 
 const myLibrary = [];
 
-
-
 function loadBook(book) {
     const card = document.createElement('div');
         card.classList = 'card';
         const info = document.createElement('div');
         info.classList = 'info';
         const title = document.createElement('p');
-        title.innerText = book.title;
+        title.textContent = book.title;
         const author = document.createElement('p');
-        author.innerText = book.author;
+        author.textContent = book.author;
         const pages = document.createElement('p');
-        pages.innerText = book.pages;
-        info.appendChild(title, author, pages);
+        pages.textContent = book.pages;
+        info.appendChild(title);
+        info.appendChild(author);
+        info.appendChild(pages);
         card.appendChild(info);
         const buttons = document.createElement('div');
         buttons.classList = 'buttons';
         const read = document.createElement('button');
         read.classList = book.read ? 'read' : 'unread';
+        read.textContent = read.className === 'read' ? 'READ' : 'NOT READ';
         const remove = document.createElement('remove');
         remove.classList = 'remove';
-        buttons.appendChild(read, remove);
+        remove.textContent = 'REMOVE';
+        buttons.appendChild(read);
+        buttons.appendChild(remove);
         card.appendChild(buttons);
+        document.querySelector('.books').appendChild(card);
 }
+
+
+function addBookToLibrary(title, author, pages, read) {
+    const book = new Book(title, author, pages, read);
+    myLibrary.push(book);
+    loadBook(book);
+    console.log(book);
+}
+
 
 function loadBooks() {
     myLibrary.forEach(book => {
@@ -64,9 +77,14 @@ window.onclick = (e) => {
 }
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const title = document.querySelector('#title').value;
-    const author = document.querySelector('#author').value;
-    const number = document.querySelector('#pages').value;
-    const read = document.querySelector('#read').value;
-    // eslint-disable-next-line no-console
+    const title2 = document.querySelector('#title').value;
+    const author2 = document.querySelector('#author').value;
+    const number2 = document.querySelector('#pages').value;
+    let read2;
+    // eslint-disable-next-line no-unneeded-ternary
+    if (document.querySelector('#read').checked)
+        read2 = true;
+    else
+        read2 = false;
+    addBookToLibrary(title2, author2, number2, read2);
 })
