@@ -228,10 +228,10 @@ input[type="text"]:invalid, input[type="number"]:invalid {
 }
 
 .stats {
-    font-size:1.6rem;    
+    font-size:1.3rem;    
 }
 .add {
-    font-size:1.35rem;
+    font-size:1.2rem;
     height:fit-content;
 }
 

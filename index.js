@@ -162,12 +162,13 @@ document.addEventListener('click', (e) => {
                 updateSidebar();
             }
         else if (e.target.className === 'remove') {
-            card.remove(); updateSidebar(); 
+            card.remove(); 
             // eslint-disable-next-line consistent-return, array-callback-return
             myLibrary = myLibrary.filter((book) => {
                 if (book.title !== card.querySelector('p').textContent)
                     return book;
             })
+            updateSidebar(); 
             }
 })
 
