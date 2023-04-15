@@ -13,6 +13,19 @@ Book.prototype.toggle = function() {
 }
 
 const myLibrary = [];
+const addButton = document.querySelector('.add');
+const modal = document.querySelector('.popup');
+const closeModal = document.querySelector('.close');
+const form = document.querySelector('form');
+const totalBooks = document.querySelector('#total');
+const leftBooks = document.querySelector('#left');
+const pagesRead = document.querySelector('#pagesRead');
+
+function updateSidebar() {
+    updateTotalBooks();
+    updateLeftBooks();
+    updatePagesRead();
+}
 
 function loadBook(book) {
     const card = document.createElement('div');
@@ -42,6 +55,7 @@ function loadBook(book) {
         card.appendChild(buttons);
         card.classList = 'card';
         document.querySelector('.books').appendChild(card);
+        updateSidebar();
 }
 
 
@@ -58,12 +72,29 @@ function loadBooks() {
     })
 }
 
-const addButton = document.querySelector('.add');
-const modal = document.querySelector('.popup');
-const closeModal = document.querySelector('.close');
-const form = document.querySelector('form');
+function updateTotalBooks() {
+    totalBooks.textContent =  `Total books: ${myLibrary.length}`;
+}
 
-document.addEventListener('DOMContentLoaded', loadBooks())
+function updateLeftBooks() {
+    let counter = 0;
+    myLibrary.forEach(book => {
+        if (!book.read)
+            counter += 1;
+    })
+    leftBooks.textContent = `Books left: ${counter}`;
+}
+
+function updatePagesRead() {
+    let counter = 0;
+    myLibrary.forEach(book => {
+        if (book.read)
+            counter += Number(book.pages);
+    })
+    pagesRead.textContent = `Total pages read: ${counter}`;
+}
+
+
 
 addButton.addEventListener('click', () => {
     modal.style.display = 'block';
@@ -79,20 +110,41 @@ window.onclick = (e) => {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const title2 = document.querySelector('#title');
-    const author2 = document.querySelector('#author');
-    const number2 = document.querySelector('#pages');
-    let read2;
-    // eslint-disable-next-line no-unneeded-ternary
-    if (document.querySelector('#read').checked)
-        read2 = true;
-    else
-        read2 = false;
-    addBookToLibrary(title2.value, author2.value, number2.value, read2);
-    modal.style.display = 'none';
-    title2.value = '';
-    author2.value = '';
-    number2.value = '';
-    document.querySelector('#read').checked = false;
+    let execute = true;
+    myLibrary.forEach(book => {
+        if (book.title === title2.value)
+            execute = false;
+    })
+    setTimeout(() => {
+        if (execute) {
+            const author2 = document.querySelector('#author');
+            const number2 = document.querySelector('#pages');
+            let read2;
+            if (document.querySelector('#read').checked)
+                read2 = true;
+            else
+                read2 = false;
+            addBookToLibrary(title2.value, author2.value, number2.value, read2);
+            modal.style.display = 'none';
+            title2.value = '';
+            author2.value = '';
+            number2.value = '';
+            document.querySelector('#read').checked = false;
+            updateSidebar();
+        }
+        else {
+            if (title2.parentElement.querySelector('.warning')) {
+                title2.parentElement.querySelector('.warning').remove();
+            }
+            const warning = document.createElement('p');
+            warning.className = 'warning';
+            warning.textContent = 'You have already added this book.';
+            warning.style.color = '#FF9999';
+            warning.style.fontSize = '13px';
+            title2.parentElement.style.marginTop = '0px';
+            title2.parentElement.append(warning);
+        }
+    }, 0)
 })
 
 document.addEventListener('click', (e) => {
@@ -107,6 +159,13 @@ document.addEventListener('click', (e) => {
                 target.toggle();
                 card.remove();
                 loadBook(target);
+                updateSidebar();
             }
-        else if (e.target.className === 'remove') card.remove();
+        else if (e.target.className === 'remove') {card.remove(); updateSidebar(); };
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadBooks();
+    updateSidebar();
+})
+
