@@ -96,16 +96,17 @@ form.addEventListener('submit', (e) => {
 })
 
 document.addEventListener('click', (e) => {
-    let card;
+    const card = e.target.parentElement.parentElement;
+
         if (e.target.className === 'read' || e.target.className === 'unread') {
-        card = e.target.parentElement.parentElement;
-        let target;
-        myLibrary.forEach(book => {
-            if (book.title === card.querySelector('p').textContent)
-                    target = book;
-            })
-            target.toggle();
-            card.remove();
-            loadBook(target);
-        }
+            let target;
+            myLibrary.forEach(book => {
+                if (book.title === card.querySelector('p').textContent)
+                        target = book;
+                })
+                target.toggle();
+                card.remove();
+                loadBook(target);
+            }
+        else if (e.target.className === 'remove') card.remove();
 })
