@@ -34,7 +34,7 @@ function loadBook(book) {
         const read = document.createElement('button');
         read.classList = book.read ? 'read' : 'unread';
         read.textContent = read.className === 'read' ? 'READ' : 'NOT READ';
-        const remove = document.createElement('remove');
+        const remove = document.createElement('button');
         remove.classList = 'remove';
         remove.textContent = 'REMOVE';
         buttons.appendChild(read);
