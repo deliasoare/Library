@@ -21,6 +21,28 @@ const totalBooks = document.querySelector('#total');
 const leftBooks = document.querySelector('#left');
 const pagesRead = document.querySelector('#pagesRead');
 
+function updateTotalBooks() {
+    totalBooks.textContent =  `Total books: ${myLibrary.length}`;
+}
+
+function updateLeftBooks() {
+    let counter = 0;
+    myLibrary.forEach(book => {
+        if (!book.read)
+            counter += 1;
+    })
+    leftBooks.textContent = `Books left: ${counter}`;
+}
+
+function updatePagesRead() {
+    let counter = 0;
+    myLibrary.forEach(book => {
+        if (book.read)
+            counter += Number(book.pages);
+    })
+    pagesRead.textContent = `Total pages read: ${counter}`;
+}
+
 function updateSidebar() {
     updateTotalBooks();
     updateLeftBooks();
@@ -71,30 +93,6 @@ function loadBooks() {
         loadBook(book);
     })
 }
-
-function updateTotalBooks() {
-    totalBooks.textContent =  `Total books: ${myLibrary.length}`;
-}
-
-function updateLeftBooks() {
-    let counter = 0;
-    myLibrary.forEach(book => {
-        if (!book.read)
-            counter += 1;
-    })
-    leftBooks.textContent = `Books left: ${counter}`;
-}
-
-function updatePagesRead() {
-    let counter = 0;
-    myLibrary.forEach(book => {
-        if (book.read)
-            counter += Number(book.pages);
-    })
-    pagesRead.textContent = `Total pages read: ${counter}`;
-}
-
-
 
 addButton.addEventListener('click', () => {
     modal.style.display = 'block';
