@@ -233,6 +233,11 @@ input[type="text"]:invalid, input[type="number"]:invalid {
 .add {
     font-size:1.2rem;
     height:fit-content;
+    box-shadow:5px 5px rgba(0, 0, 0, 0.24);
+}
+.header {
+    position:relative;
+    box-shadow:4px 4px rgba(0,0,0,0.40);
 }
 button:hover, .header > h2:hover, label:hover, input[type="checkbox"] {
     cursor:pointer;
