@@ -170,6 +170,7 @@ button.add {
     font-size:30px;
 }
 .close:hover, .close:focus {
+    color:grey;
     cursor:pointer;
 }
 ul {

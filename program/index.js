@@ -5,7 +5,7 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-Book.prototype.read = function() {
+Book.prototype.toggle = function() {
     if (this.read)
         this.read = false;
     else
@@ -40,6 +40,7 @@ function loadBook(book) {
         buttons.appendChild(read);
         buttons.appendChild(remove);
         card.appendChild(buttons);
+        card.classList = 'card';
         document.querySelector('.books').appendChild(card);
 }
 
@@ -48,7 +49,6 @@ function addBookToLibrary(title, author, pages, read) {
     const book = new Book(title, author, pages, read);
     myLibrary.push(book);
     loadBook(book);
-    console.log(book);
 }
 
 
@@ -62,6 +62,7 @@ const addButton = document.querySelector('.add');
 const modal = document.querySelector('.popup');
 const closeModal = document.querySelector('.close');
 const form = document.querySelector('form');
+
 document.addEventListener('DOMContentLoaded', loadBooks())
 
 addButton.addEventListener('click', () => {
@@ -92,4 +93,19 @@ form.addEventListener('submit', (e) => {
     author2.value = '';
     number2.value = '';
     document.querySelector('#read').checked = false;
+})
+
+document.addEventListener('click', (e) => {
+    let card;
+        if (e.target.className === 'read' || e.target.className === 'unread') {
+        card = e.target.parentElement.parentElement;
+        let target;
+        myLibrary.forEach(book => {
+            if (book.title === card.querySelector('p').textContent)
+                    target = book;
+            })
+            target.toggle();
+            card.remove();
+            loadBook(target);
+        }
 })
