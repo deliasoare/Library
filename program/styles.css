@@ -65,7 +65,7 @@ html, body {
 }
 .add {
     max-height:60px;
-    min-width:150px;
+    max-width:150px;
 }
 /* Style */
 .sidebar, .main {
@@ -235,14 +235,14 @@ input[type="text"]:invalid, input[type="number"]:invalid {
 @media (max-width:600px) {
     .container {
         grid-template-columns:1fr;
-        grid-template-rows:150px minmax(250px, 1fr) fit-content;
+        grid-template-rows:150px minmax(250px, 1fr) max(fit-content, 6fr);
     }
     .sidebar {
         grid-row:2;
         grid-column:1;
         display:flex;
         flex-direction:column-reverse;
-        gap:min(15%, 10px);
+        gap:20px;
         justify-content:flex-end;
         align-items:center;
     }
@@ -251,6 +251,7 @@ input[type="text"]:invalid, input[type="number"]:invalid {
         flex-direction:column;
         gap:5%;
         height:min(100%,200px);
+        
     }
     .stats > h3 {
         margin:0 auto;
@@ -262,4 +263,12 @@ input[type="text"]:invalid, input[type="number"]:invalid {
     #submit {
         width:fit-content;
     }
+    .main {
+        display:flex;
+        justify-content:center;
+    }
+    .books {
+        width:60%;
+    }
+    
 }
