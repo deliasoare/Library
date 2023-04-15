@@ -69,5 +69,4 @@ form.addEventListener('submit', (e) => {
     const number = document.querySelector('#pages').value;
     const read = document.querySelector('#read').value;
     // eslint-disable-next-line no-console
-    addBook
 })
