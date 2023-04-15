@@ -232,6 +232,7 @@ input[type="text"]:invalid, input[type="number"]:invalid {
     border:2px solid var(--unread);
 }
 
+
 @media (max-width:600px) {
     .container {
         grid-template-columns:1fr;
@@ -251,7 +252,7 @@ input[type="text"]:invalid, input[type="number"]:invalid {
         flex-direction:column;
         gap:5%;
         height:min(100%,200px);
-        
+
     }
     .stats > h3 {
         margin:0 auto;
