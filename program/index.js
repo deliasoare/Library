@@ -149,7 +149,6 @@ form.addEventListener('submit', (e) => {
 
 document.addEventListener('click', (e) => {
     const card = e.target.parentElement.parentElement;
-
         if (e.target.className === 'read' || e.target.className === 'unread') {
             let target;
             myLibrary.forEach(book => {
@@ -157,8 +156,8 @@ document.addEventListener('click', (e) => {
                         target = book;
                 })
                 target.toggle();
-                card.remove();
-                loadBook(target);
+                e.target.className = target.read ? 'read' : 'unread';
+                e.target.textContent = target.read ? 'READ' : 'UNREAD'
                 updateSidebar();
             }
         else if (e.target.className === 'remove') {card.remove(); updateSidebar(); };
