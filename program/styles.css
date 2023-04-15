@@ -63,10 +63,6 @@ html, body {
 .card {
     max-width:350px;
 }
-.add {
-    max-height:60px;
-    max-width:150px;
-}
 /* Style */
 .sidebar, .main {
     font-size:1.3rem;
@@ -84,7 +80,6 @@ html, body {
     color: var(--card);
 }
 button.add {
-    width:45%;
     padding:1.1em;
     border-radius:25px;
     border:none;
@@ -232,6 +227,13 @@ input[type="text"]:invalid, input[type="number"]:invalid {
     border:2px solid var(--unread);
 }
 
+.stats {
+    font-size:1.6rem;    
+}
+.add {
+    font-size:1.35rem;
+    height:fit-content;
+}
 
 @media (max-width:600px) {
     .container {

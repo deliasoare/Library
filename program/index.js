@@ -96,6 +96,9 @@ function loadBooks() {
 
 addButton.addEventListener('click', () => {
     modal.style.display = 'block';
+    if (modal.querySelector('.warning')) {
+        modal.querySelector('.warning').remove();
+    }
 })
 closeModal.addEventListener('click', () => {
     modal.style.display = 'none';
